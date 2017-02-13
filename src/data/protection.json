@@ -1,0 +1,10 @@
+[
+    {
+        "tag": "protection-second-level",
+        "url": "http://demo.bergb.com/maps/v2/layers/kmls/rezim-zastite-II-stepena.kml"
+    },
+    {
+        "tag": "protection-third-level",
+        "url": "http://demo.bergb.com/maps/v2/layers/kmls/rezim-zastite-III-stepena.kml"
+    }
+]

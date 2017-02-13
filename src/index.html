@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapa | Fruška gora, Srbija | Fruškać</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/simplebar.css">
+
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+    <div class="panel">
+        <button type="button" class="fullscreen-btn">Full</button>
+        
+        <div class="panel-header">
+            <button type="button" class="menu-btn">Meni</button>
+            <label class="checkbox clustering-checkbox">
+                <input type="checkbox" checked>
+                <div class="checkbox-label">Grupisanje</div>
+            </label>
+            <label class="switch satellite-view">
+                <input type="checkbox">
+                <div class="slider-label">Satelit</div>
+            </label>
+        </div>
+        <div class="panel-scroll">
+            <!-- layers -->
+            <div class="panel-layers">
+                <!-- single layer -->
+                <div class="layer expanded">
+                    <label class="switch layer-toggle" data-layer="locations" data-type="marker">
+                        <input type="checkbox" checked>
+                        <div class="slider-label">Lokacije</div>
+                    </label>
+                    <button type="button" class="expand-collapse expanded"></button>
+                    <!-- sublayers 2 columns -->
+                    <div class="sublayers">
+                        <label class="checkbox layer-checkbox" data-sublayer="monasteries">
+                            <input type="checkbox" checked>
+                            <div class="checkbox-label">Manastiri</div>
+                        </label> 
+                        
+                        <label class="checkbox layer-checkbox" data-sublayer="lakes">
+                            <input type="checkbox" checked>
+                            <div class="checkbox-label">Jezera</div>
+                        </label>
+                    </div>
+                    <!-- /sublayers -->
+                </div>
+                <!-- /single layer -->
+                
+                <!-- single layer -->
+                <div class="layer expanded">
+                    <label class="switch layer-toggle" data-layer="marathon" data-type="track">
+                        <input type="checkbox" checked>
+                        <div class="slider-label">Maraton</div>
+                    </label>
+                    <button type="button" class="expand-collapse expanded"></button>
+                    <!-- sublayers 1 column -->
+                    <div class="sublayers">
+                         <label class="checkbox layer-checkbox" data-sublayer="small-west">
+                            <input type="checkbox" checked>
+                            <div class="checkbox-label">Mali zapadni</div>
+                        </label>
+
+                        <label class="checkbox layer-checkbox" data-sublayer="duro-salaj">
+                            <input type="checkbox">
+                            <div class="checkbox-label">Đuro Salaj</div>
+                        </label>
+
+                        <label class="checkbox layer-checkbox" data-sublayer="small-east">
+                            <input type="checkbox" checked>
+                            <div class="checkbox-label">Mali istočni</div>
+                        </label>
+                    </div>
+                    <!-- /sublayers -->
+                </div>
+                <!-- /single layer -->
+                
+                <!-- single layer -->
+                <div class="layer">
+                    <label class="switch layer-toggle" data-layer="time" data-type="marker">
+                        <input type="checkbox"> 
+                        <div class="slider-label">Vreme</div>
+                    </label>
+                </div>
+                <!-- /single layer -->
+
+                <!-- single layer -->
+                <div class="layer expanded">
+                    <label class="switch layer-toggle" data-layer="protection" data-type="kml">
+                        <input type="checkbox" checked>
+                        <div class="slider-label">Stepeni zaštite</div>
+                    </label>
+                    <button type="button" class="expand-collapse expanded"></button>
+                    <!-- sublayers 1 column -->
+                    <div class="sublayers">
+                         <label class="checkbox layer-checkbox" data-sublayer="protection-borders">
+                            <input type="checkbox" checked>
+                            <div class="checkbox-label">Granice</div>
+                        </label>
+
+                        <label class="checkbox layer-checkbox" data-sublayer="protection-first-level">
+                            <input type="checkbox">
+                            <div class="checkbox-label">I stepen</div>
+                        </label>
+                        
+                        <label class="checkbox layer-checkbox" data-sublayer="protection-second-level">
+                            <input type="checkbox">
+                            <div class="checkbox-label">II stepen</div>
+                        </label>
+                        
+                        <label class="checkbox layer-checkbox" data-sublayer="protection-third-level">
+                            <input type="checkbox">
+                            <div class="checkbox-label">III stepen</div>
+                        </label>
+                    </div>
+                    <!-- /sublayers -->
+                </div>
+                <!-- /single layer -->
+            </div>
+        </div>
+    </div>
+
+    <div id="map" class="map"></div>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//maps.google.com/maps/api/js?key=AIzaSyDP5opMTc3z2n4eyGZhVgcmhm9wSu4Jxgk"></script>
+    <script src="js/markerclusterer.js"></script>
+    <script src="js/simplebar.min.js"></script>
+    <script src="js/bigscreen.min.js"></script>
+    <script src="js/main.js"></script>
+    
+</body>
+</html>

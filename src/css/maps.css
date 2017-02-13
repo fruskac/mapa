@@ -1,0 +1,646 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+.maps-sprite, .infowindow .close-btn, .locations-all-btn input[type=checkbox] + label, .locations-all-btn input[type=checkbox]:not(:checked) + label, .clustering-btn input[type=checkbox] + label, .clustering-btn input[type=checkbox]:not(:checked) + label, .monasteries-btn input[type=checkbox] + label, .lakes-btn input[type=checkbox] + label, .springs-btn input[type=checkbox] + label, .misc-btn input[type=checkbox] + label, .picnic-areas-btn input[type=checkbox] + label, .meadows-btn input[type=checkbox] + label, .fishponds-btn input[type=checkbox] + label, .waterfalls-btn input[type=checkbox] + label, .monuments-btn input[type=checkbox] + label, .lookouts-btn input[type=checkbox] + label, #print-ctrl .large a, #print-ctrl .segment a, .cluster.small, .cluster.medium, .cluster.large, .show-menu {
+  background-image: url('img/maps.png');
+  background-repeat: no-repeat;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0mm 0mm 0mm 0mm;
+}
+
+/*  
+@page  
+{ 
+    size: auto; 
+   margin: 0mm 0mm 0mm 0mm;
+} 
+*/
+.map-page .region-page-top {
+  display: none !important;
+}
+
+body {
+  text-align: center;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.gmap3 {
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  -webkit-transform: translate(0px, 0px) scale(1);
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  display: block;
+  background: #efefea;
+  border-bottom: 1px solid #cbcbcb;
+  overflow: visible;
+}
+
+.map-page h1 {
+  display: none;
+}
+
+#ctrl-wrap {
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  margin-left: -300px;
+}
+
+.map-page .language-switcher-locale-url {
+  position: absolute;
+  top: 18px;
+  right: 26px;
+}
+
+#ctrl-wrap h2 {
+  float: left;
+  height: 60px;
+  line-height: 60px;
+  cursor: pointer;
+  padding-left: 16px;
+  font: 13px/60px Georgia,"Times New Roman",Serif;
+}
+
+#print-ctrl h2 {
+  padding-right: 16px;
+}
+
+#print-ctrl h2:hover {
+  color: #a9a9a6;
+}
+
+#locations-ctrl {
+  height: 60px;
+  float: left;
+  border-left: 1px solid #e0e0d7;
+  border-right: 1px solid #e0e0d7;
+  position: relative;
+}
+
+#locations-btns {
+  margin-left: 50px;
+  width: 422px;
+  height: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.animation-wrap {
+  margin: 14px 0 0 4px;
+  width: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+#logo-map img {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+  height: 50px;
+}
+
+.on {
+  border-bottom: 1px solid #4eff00;
+}
+
+.infowindow {
+  width: 285px;
+  height: 300px;
+  top: -309px;
+  left: -20px;
+  position: absolute;
+  background: #fff;
+  display: block;
+  -moz-box-shadow: 9px -2px 25px rgba(50, 50, 50, 0.75);
+  -webkit-box-shadow: 9px -2px 25px rgba(50, 50, 50, 0.75);
+  box-shadow: 9px -2px 25px rgba(50, 50, 50, 0.75);
+  border-bottom: 2px solid;
+}
+
+.infowindow img {
+  display: block;
+  width: 100%;
+}
+
+.infowindow .external:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+  display: block;
+}
+
+.infowindow h2 {
+  padding: 15px;
+}
+
+.infowindow h2 a {
+  font: oblique 16px/16px Georgia,"Times New Roman",Serif;
+}
+
+.infowindow p {
+  font: 12px/16px Georgia,"Times New Roman",Serif;
+  margin: 0 15px 10px 15px;
+}
+
+.infowindow .close-btn {
+  position: absolute;
+  top: 165px;
+  right: 5px;
+  background-position: 0 -320px;
+  width: 28px;
+  height: 27px;
+  text-indent: -9999px;
+}
+
+.infowindow .close-btn:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8;
+}
+
+.infowindow.lakes {
+  border-color: #448b89;
+}
+
+.infowindow.monasteries {
+  border-color: #ac860c;
+}
+
+.infowindow.waterfalls {
+  border-color: #26b1b7;
+}
+
+.infowindow.fishponds {
+  border-color: #26b1b7;
+}
+
+.infowindow.monasteries {
+  border-color: #d8a400;
+}
+
+.infowindow.monuments {
+  border-color: #666666;
+}
+
+.infowindow.springs {
+  border-color: #4d84a6;
+}
+
+.infowindow.misc {
+  border-color: #e0196a;
+}
+
+.infowindow.picnic-areas {
+  border-color: #4f452f;
+}
+
+.infowindow.meadows {
+  border-color: #9ca22f;
+}
+
+.infowindow.lookouts {
+  border-color: #8c1bdd;
+}
+
+.location-wrap {
+  text-align: left;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  cursor: default;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  text-align: center;
+  width: 100%;
+  font: oblique 14px/14px Georgia,"Times New Roman",Serif !important;
+}
+
+.checkbox-wrap {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  margin-left: 4px;
+}
+
+input[type=checkbox] {
+  width: 32px;
+  height: 32px;
+  display: block;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+input[type=checkbox]:not(:checked) {
+  background: #ffcc00;
+}
+
+input[type=checkbox] + label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  text-indent: -9999px;
+  display: block;
+  z-index: 1;
+}
+
+.cluster {
+  cursor: pointer;
+}
+
+#locations-btns .checkbox-wrap {
+  float: left;
+}
+
+.locations-all-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.locations-all-btn input[type=checkbox] + label {
+  background-position: 0 -491px;
+  height: 32px;
+  width: 600px;
+}
+
+.locations-all-btn input[type=checkbox]:not(:checked) + label {
+  background-position: 0 -619px;
+}
+
+.clustering-btn {
+  width: 42px;
+}
+
+.clustering-btn input[type=checkbox] + label {
+  background-position: 0 -555px;
+  width: 42px;
+}
+
+/**/
+.clustering-btn input[type=checkbox]:not(:checked) + label {
+  background-position: 0 -587px;
+}
+
+.monasteries-btn input[type=checkbox] + label {
+  background-position: 0 -256px;
+}
+
+.lakes-btn input[type=checkbox] + label {
+  background-position: 0 0;
+}
+
+.springs-btn input[type=checkbox] + label {
+  background-position: 0 -192px;
+}
+
+.misc-btn input[type=checkbox] + label {
+  background-position: 0 -160px;
+}
+
+.picnic-areas-btn input[type=checkbox] + label {
+  background-position: 0 -96px;
+}
+
+.meadows-btn input[type=checkbox] + label {
+  background-position: 0 -32px;
+}
+
+.fishponds-btn input[type=checkbox] + label {
+  background-position: 0 -64px;
+}
+
+.waterfalls-btn input[type=checkbox] + label {
+  background-position: 0 -224px;
+}
+
+.monuments-btn input[type=checkbox] + label {
+  background-position: 0 -288px;
+}
+
+.lookouts-btn input[type=checkbox] + label {
+  background-position: 0 -128px;
+}
+
+.monasteries-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px  -256px;
+}
+
+.lakes-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px 0;
+}
+
+.springs-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px  -192px;
+}
+
+.misc-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px  -160px;
+}
+
+.picnic-areas-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px  -96px;
+}
+
+.meadows-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px  -32px;
+}
+
+.fishponds-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px  -64px;
+}
+
+.waterfalls-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px  -224px;
+}
+
+.monuments-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px -288px;
+}
+
+.lookouts-btn input[type=checkbox]:not(:checked) + label {
+  background-position: -64px -128px;
+}
+
+/*
+#locations-ctrl #locations-btns  input[type=checkbox]+ label{
+	background-position-x:-32px; 
+}*/
+#locations-btns input[type=checkbox]:not(:checked) + label, #locations-ctrl:hover #locations-btns input[type=checkbox]:not(:checked) + label, #locations-ctrl #locations-btns input[type=checkbox]:not(:checked) + label {
+  background-position-x: -64px;
+}
+
+#location-label, #loader {
+  width: 100px;
+  height: 16px;
+  background: #3f3f3f;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  margin-left: -50px;
+  color: #fff;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 16px;
+}
+
+#loader {
+  display: block;
+}
+
+.clustering-btn {
+  position: absolute;
+  right: 16px;
+  top: 0;
+}
+
+.clustering-btn input {
+  width: 64px;
+}
+
+#print-ctrl {
+  float: left;
+  border-left: 1px solid #e0e0d7;
+  border-right: 1px solid #e0e0d7;
+  height: 60px;
+  display: none;
+}
+
+#print-ctrl .animation-wrap {
+  width: 0;
+}
+
+#print-ctrl ul {
+  width: 86px;
+}
+
+#print-ctrl ul li {
+  float: left;
+  margin: 6px 10px 0 0;
+}
+
+#print-ctrl ul li a {
+  text-indent: -9999px;
+  display: block;
+  height: 21px;
+  width: 29px;
+}
+
+#print-ctrl .large a {
+  background-position: 0 -771px;
+}
+
+#print-ctrl .large a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+
+#print-ctrl .segment a {
+  background-position: 0 -792px;
+}
+
+#print-ctrl .segment a:hover {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  opacity: 0.7;
+}
+
+.print-regions {
+  position: absolute;
+  z-index: 11;
+  top: 61px;
+  bottom: 2px;
+  left: 0;
+  right: 7px;
+}
+
+.print-regions.one .region {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 2px solid  #ff0248;
+}
+
+.print-regions.one .region:after {
+  content: '';
+  border: 2px solid #ff0248;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -4px;
+  top: -4px;
+}
+
+.region {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+}
+
+.p1 {
+  left: 0;
+  top: 0;
+  border: 2px solid  #ff0248;
+}
+
+.p2 {
+  left: 50%;
+  top: 0;
+  border: 2px solid  #ff0248;
+  border-left: none;
+}
+
+.p3 {
+  top: 50%;
+  left: 0;
+  border: 2px solid  #ff0248;
+  border-top: none;
+}
+
+.p4 {
+  top: 50%;
+  left: 50%;
+  border: 2px solid  #ff0248;
+  border-left: none;
+  border-top: none;
+}
+
+.cluster {
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cluster.small {
+  background-position: 0 -523px;
+  width: 32px;
+  height: 32px;
+  font: 12px/32px Arial, Helvetica, Sans-Serif;
+}
+
+.cluster.medium {
+  background-position: 0 -443px;
+  width: 48px;
+  height: 48px;
+  font: 20px/48px Arial, Helvetica, Sans-Serif;
+}
+
+.cluster.large {
+  background-position: 0 -379px;
+  width: 64px;
+  height: 64px;
+  font: 28px/64px Arial, Helvetica, Sans-Serif;
+}
+
+#satelite-btn {
+  position: absolute;
+  z-index: 100;
+  width: 60px;
+  height: 25px;
+  background: #FFF;
+  top: 410px;
+  left: 15px;
+  border: 1px solid #BBB;
+  font: 13px/25px Arial, Helvetica, Sans-Serif;
+  cursor: pointer;
+}
+
+#satelite-btn:hover {
+  background: #eee;
+}
+
+.show-menu {
+  background-position: 0 -347px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 32px;
+  height: 32px;
+  text-indent: -9999px;
+  border: none;
+  cursor: pointer;
+  z-index: 201;
+}
