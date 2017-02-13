@@ -1,0 +1,18 @@
+{
+  "name": "mapa",
+  "description": "Fruška gora - Mapa",
+  "main": "dist/index.html",
+  "authors": [
+    "Mladen Plavsic <mladen.plavsic@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/fruskac/mapa",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
