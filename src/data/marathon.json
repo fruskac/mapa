@@ -1,7 +1,7 @@
 [
     {
         "tag": "small-west",
-        "url": "layers/tracks/fruska-gora-bukovacki-maraton.gpx",
+        "url": "data/tracks/fruska-gora-bukovacki-maraton.gpx",
         "data": {
             "stroke_color": "#FF00AA",
             "fill_color": "#FF0000"
@@ -9,14 +9,14 @@
     },
     {
         "tag": "small-east",
-        "url": "layers/tracks/fruska-gora-sremski-karlovci.gpx",
+        "url": "data/tracks/fruska-gora-sremski-karlovci.gpx",
         "data": {
             "stroke_color": "#FF00AA"
         }
     },
     {
         "tag": "duro-salaj",
-        "url": "layers/tracks/fruska-gora-sa-os-duro-salaj.gpx",
+        "url": "data/tracks/fruska-gora-sa-os-duro-salaj.gpx",
         "data": {
             "stroke_color": "#FF00AA",
             "fill_color": "#FF0000"

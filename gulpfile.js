@@ -2,10 +2,12 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var cssnano = require('gulp-cssnano');
 var less = require('gulp-less');
+var replace = require('gulp-replace');
 var uglify = require('gulp-uglify');
 
 gulp.task('default', [
-  'vendor'
+  'vendor',
+  'less'
 ]);
 
 gulp.task('vendor', [
@@ -31,5 +33,34 @@ gulp.task('vendor_css', function () {
   ])
     .pipe(concat('vendor.css'))
     .pipe(cssnano())
+    .pipe(gulp.dest('dist'))
+});
+
+gulp.task('less', ['font'], function () {
+  return gulp.src([
+    'bower_components/font-awesome/css/font-awesome.min.css',
+    'src/less/*.less'
+  ])
+    .pipe(concat('main.css'))
+    .pipe(less())
+    .pipe(cssnano())
+    .pipe(replace("url(../fonts/", "url(fonts/"))// find another way to do this
+    .pipe(gulp.dest('dist'))
+});
+
+gulp.task('font', function () {
+  return gulp.src([
+    'bower_components/font-awesome/fonts/*.*',
+    'src/fonts/*.*'
+  ])
+    .pipe(gulp.dest('dist/fonts'))
+});
+
+gulp.task('js', function () {
+  return gulp.src([
+    'src/js/*.js'
+  ])
+    .pipe(concat('main.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('dist'))
 });
