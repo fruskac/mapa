@@ -7,7 +7,8 @@ var uglify = require('gulp-uglify');
 
 gulp.task('default', [
   'vendor',
-  'less'
+  'less',
+  'js'
 ]);
 
 gulp.task('vendor', [
@@ -17,10 +18,9 @@ gulp.task('vendor', [
 
 gulp.task('vendor_js', function () {
   return gulp.src([
-    'bower_components/jquery/dist/jquery.min.js',
     'bower_components/BigScreen/bigscreen.min.js',
     'bower_components/simplebar/dist/simplebar.min.js',
-    'bower_components/gmaps-marker-clusterer/src/markerclusterer.js'
+//    'bower_components/gmaps-marker-clusterer/src/markerclusterer.js'
   ])
     .pipe(concat('vendor.js'))
     .pipe(uglify())
@@ -38,7 +38,6 @@ gulp.task('vendor_css', function () {
 
 gulp.task('less', ['font'], function () {
   return gulp.src([
-    'bower_components/font-awesome/css/font-awesome.min.css',
     'src/less/*.less'
   ])
     .pipe(concat('main.css'))
@@ -50,7 +49,6 @@ gulp.task('less', ['font'], function () {
 
 gulp.task('font', function () {
   return gulp.src([
-    'bower_components/font-awesome/fonts/*.*',
     'src/fonts/*.*'
   ])
     .pipe(gulp.dest('dist/fonts'))
